@@ -1,0 +1,12 @@
+2025-09-28 01:21:14,481 INFO o.s.b.StartupInfoLogger [Test worker] Starting JacksonLibraryApplicationTests using Java 17.0.12 with PID 15596 (started by tejas-joshi in /home/tejas-joshi/Documents/GitHub/java/jackson-library)
+2025-09-28 01:21:14,484 DEBUG o.s.b.StartupInfoLogger [Test worker] Running with Spring Boot v3.5.6, Spring v6.2.11
+2025-09-28 01:21:14,486 INFO o.s.b.SpringApplication [Test worker] No active profile set, falling back to 1 default profile: "default"
+2025-09-28 01:21:15,293 INFO o.s.b.StartupInfoLogger [Test worker] Started JacksonLibraryApplicationTests in 1.203 seconds (process running for 2.143)
+2025-09-28 01:21:50,596 INFO o.s.b.StartupInfoLogger [Test worker] Starting JacksonLibraryApplicationTests using Java 17.0.12 with PID 16032 (started by tejas-joshi in /home/tejas-joshi/Documents/GitHub/java/jackson-library)
+2025-09-28 01:21:50,598 DEBUG o.s.b.StartupInfoLogger [Test worker] Running with Spring Boot v3.5.6, Spring v6.2.11
+2025-09-28 01:21:50,599 INFO o.s.b.SpringApplication [Test worker] No active profile set, falling back to 1 default profile: "default"
+2025-09-28 01:21:51,398 INFO o.s.b.StartupInfoLogger [Test worker] Started JacksonLibraryApplicationTests in 1.112 seconds (process running for 1.891)
+2025-09-28 01:22:19,069 INFO o.s.b.StartupInfoLogger [Test worker] Starting JacksonLibraryApplicationTests using Java 17.0.12 with PID 16454 (started by tejas-joshi in /home/tejas-joshi/Documents/GitHub/java/jackson-library)
+2025-09-28 01:22:19,072 DEBUG o.s.b.StartupInfoLogger [Test worker] Running with Spring Boot v3.5.6, Spring v6.2.11
+2025-09-28 01:22:19,073 INFO o.s.b.SpringApplication [Test worker] No active profile set, falling back to 1 default profile: "default"
+2025-09-28 01:22:20,273 INFO o.s.b.StartupInfoLogger [Test worker] Started JacksonLibraryApplicationTests in 1.503 seconds (process running for 2.348)
