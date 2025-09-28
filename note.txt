@@ -1,0 +1,107 @@
+---------------------------------------------------------------------------------------------------------------------------------------------------
+
+Introduction to Jackson Annotations :-
+
+    1) Jackson is a popular Java library for :-
+        - Serializing Java objects into JSON
+        - Deserializing JSON into Java objects
+
+    2) By default, Jackson uses JavaBean conventions :-
+        - Properties are mapped to JSON fields using getters/setters.
+        - Field names are directly used as JSON keys (unless configured otherwise).
+
+    3) But in real-world applications :-
+        - Field names in JSON may differ from Java field names.
+        - Some fields may need to be ignored.
+        - Formatting (e.g., dates) might not match default expectations.
+        - Polymorphic types (inheritance) may need explicit hints for correct deserialization.
+
+    👉 This is where Jackson annotations come in :-
+        Jackson annotations are metadata placed on classes, fields, methods, or constructors that tell Jackson how to handle (de)serialization.
+    👉 They live in the package :-
+        com.fasterxml.jackson.annotation
+
+---------------------------------------------------------------------------------------------------------------------------------------------------
+
+Annotations :-
+
+1)  JacksonAnnotation
+2)  JacksonAnnotationsInside
+3)  JacksonAnnotationValue
+4)  JacksonInject
+5)  JsonAlias
+6)  JsonAnyGetter
+7)  JsonAnySetter
+8)  JsonAutoDetect
+9)  JsonBackReference
+10) JsonClassDescription
+11) JsonCreator
+12) JsonEnumDefaultValue
+13) JsonFilter
+14) JsonFormat
+15) JsonGetter
+16) JsonIdentityInfo
+17) JsonIdentityReference
+18) JsonIgnore
+19) JsonIgnoreProperties
+20) JsonIgnoreType
+21) JsonInclude
+22) JsonIncludeProperties
+23) JsonKey
+24) JsonManagedReference
+25) JsonMerge
+26) JsonProperty
+27) JsonPropertyDescription
+28) JsonPropertyOrder
+29) JsonRawValue
+30) JsonRootName
+31) JsonSetter
+32) JsonSubTypes
+33) JsonTypeId
+34) JsonTypeInfo
+35) JsonTypeName
+36) JsonUnwrapped
+37) JsonValue
+38) JsonView
+
+---------------------------------------------------------------------------------------------------------------------------------------------------
+
+@Target({ElementType.ANNOTATION_TYPE, ElementType.FIELD, ElementType.METHOD, ElementType.PARAMETER})
+@Retention(RetentionPolicy.RUNTIME)
+@JacksonAnnotation
+public @interface JsonProperty {
+    //
+}
+
+Note :-
+    1) @Target, @Retention, @JacksonAnnotation :-  Meta-Annotations
+    2) @Target, @Retention :-  present in 'java.lang.annotation'
+    3) @JacksonAnnotation  :-  marker annotation used internally by Jackson.
+        - It tells Jackson’s AnnotationIntrospector (the component that scans annotations) that this is a Jackson-specific annotation.
+        - This helps Jackson differentiate between its own annotations and other custom/third-party ones.
+        - 👉 Without this, Jackson wouldn’t automatically recognize @JsonProperty as part of its processing pipeline.
+
+
+1) @Target  :-
+
+    @Documented
+    @Retention(RetentionPolicy.RUNTIME)
+    @Target(ElementType.ANNOTATION_TYPE)
+    public @interface Target {
+        ElementType[] value();
+    }
+
+public enum ElementType {
+    TYPE,              // Class, interface (including annotation interface), enum, or record declaration
+    FIELD,             // Field declaration (includes enum constants)
+    METHOD,            // Method declaration
+    PARAMETER,         // Formal parameter declaration
+    CONSTRUCTOR,       // Constructor declaration
+    LOCAL_VARIABLE,    // Local variable declaration
+    ANNOTATION_TYPE,   // Annotation interface declaration (Formerly known as an annotation type.)
+    PACKAGE,           // Package declaration
+    TYPE_PARAMETER,    // Type parameter declaration
+    TYPE_USE,          // Use of a type
+    MODULE,            // Module declaration.
+    RECORD_COMPONENT;  // Record component
+}
