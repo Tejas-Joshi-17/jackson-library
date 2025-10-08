@@ -105,3 +105,166 @@ public enum ElementType {
     MODULE,            // Module declaration.
     RECORD_COMPONENT;  // Record component
 }
+
+1] TYPE :-      Used on Class, interface (including annotation interface), enum, or record declaration
+
+    @Target(ElementType.TYPE)
+    @Retention(RetentionPolicy.RUNTIME)
+    @interface TypeLevel {}
+
+    - a) On Class :-                        @TypeLevel
+                                            public class MyClass {}
+    - b) On Interface :-                    @TypeLevel
+                                            interface MyInterface {}
+    - d) On Enum :-                         @TypeLevel
+                                            enum MyEnum {}
+    - e) On Record :-                       @TypeLevel
+                                            record MyRecord(int id, String name) {
+                                                //
+                                            }
+
+2] FIELD :-     Used on fields (including enum constants).
+
+    @Target(ElementType.FIELD)
+    @Retention(RetentionPolicy.RUNTIME)
+    @interface FieldLevel {}
+
+    class User {
+        @FieldLevel
+        private String name;
+
+        @FieldLevel
+        public static final int VERSION = 1;
+
+        enum Status {
+            @FieldLevel ACTIVE,
+            @FieldLevel INACTIVE
+        }
+    }
+
+
+3] METHOD :-        Used on method declarations.
+
+    @Target(ElementType.METHOD)
+    @Retention(RetentionPolicy.RUNTIME)
+    @interface MethodLevel {}
+
+    class Service {
+        @MethodLevel
+        public void process() {}
+    }
+
+
+4] PARAMETER :-         Used on method/constructor parameters.
+
+    @Target(ElementType.PARAMETER)
+    @Retention(RetentionPolicy.RUNTIME)
+    @interface ParamLevel {}
+
+    class UserService {
+        public void createUser(@ParamLevel String name, @ParamLevel int age) {}
+    }
+
+
+5] CONSTRUCTOR :-          Used on constructors.
+
+    @Target(ElementType.CONSTRUCTOR)
+    @Retention(RetentionPolicy.RUNTIME)
+    @interface ConstructorLevel {}
+
+    class Product {
+        @ConstructorLevel
+        public Product() {}
+    }
+
+
+6] LOCAL_VARIABLE :-        Used on local variables inside methods.
+
+    @Target(ElementType.LOCAL_VARIABLE)
+    @Retention(RetentionPolicy.RUNTIME)
+    @interface LocalVarLevel {}
+
+    class Calculator {
+        public int sum(int a, int b) {
+            @LocalVarLevel int result = a + b;
+            return result;
+        }
+    }
+
+
+7] ANNOTATION_TYPE :-       Used on annotations themselves.
+
+    @Target(ElementType.ANNOTATION_TYPE)
+    @Retention(RetentionPolicy.RUNTIME)
+    @interface MetaAnnotation {}
+
+    @MetaAnnotation
+    @interface CustomAnnotation {}
+
+
+8] PACKAGE :-       Used on package declarations.
+                    Must be placed in package-info.java.
+
+    package-info.java :-
+
+    @PackageLevel
+    package com.example.myapp;
+
+    import java.lang.annotation.*;
+
+    @Target(ElementType.PACKAGE)
+    @Retention(RetentionPolicy.RUNTIME)
+    @interface PackageLevel {}
+
+
+9] TYPE_PARAMETER :-        Used on generic type parameters.
+
+    @Target(ElementType.TYPE_PARAMETER)
+    @Retention(RetentionPolicy.RUNTIME)
+    @interface TypeParamLevel {}
+
+    class Box<@TypeParamLevel T> {
+        private T value;
+    }
+
+
+10] TYPE_USE :-     Used on any usage of a type (very powerful).
+
+    @Target(ElementType.TYPE_USE)
+    @Retention(RetentionPolicy.RUNTIME)
+    @interface TypeUseLevel {}
+
+    class Demo {
+        @TypeUseLevel String name;                 // field type
+        private List<@TypeUseLevel String> items;  // generic type
+        public @TypeUseLevel String getName() {    // return type
+            return name;
+        }
+    }
+
+
+11] MODULE :-       Used on Java 9+ module declarations (module-info.java).
+
+    module-info.java :-
+
+    @ModuleLevel
+    module my.module {
+        exports com.example;
+    }
+
+    import java.lang.annotation.*;
+
+    @Target(ElementType.MODULE)
+    @Retention(RetentionPolicy.RUNTIME)
+    @interface ModuleLevel {}
+
+
+12] RECORD_COMPONENT :-         Used on record components (Java 16+).
+
+    @Target(ElementType.RECORD_COMPONENT)
+    @Retention(RetentionPolicy.RUNTIME)
+    @interface RecordComponentLevel {}
+
+    record Person(@RecordComponentLevel String name,
+                  @RecordComponentLevel int age) {}
+
