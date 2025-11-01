@@ -1,9 +1,7 @@
 #!/bin/bash
 
-export BIG_JVM_OPTIONS=${BIG_JVM_OPTIONS:-"-Xmx512M -Xms216M"}
-
-export SERVER_PORT=9200
-export BIG_JVM_OPTIONS="-Xmx2048M -Xms250M"
+export SERVER_PORT=13020
+export BIG_JVM_OPTIONS="-Xmx250M -Xms125M"
 
 export NAMCO_USE_OPENID=false
 export TRUST_STORE=keys/server.jks
