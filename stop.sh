@@ -13,6 +13,6 @@ then
     gradle clean
     echo "Project Cleaned Successfully"
 else
-    gradle clean iA
+    gradle clean
     echo "Project Cleaned Successfully"
 fi

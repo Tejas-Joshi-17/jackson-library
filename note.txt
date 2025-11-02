@@ -275,9 +275,3 @@ public enum ElementType {
 @Retention  <---- Remaining
 
 ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
-
-1) @JsonProperty :-
-
-    Variable Filed in the Model Object should name (id) and your json request and response object will have a different name (student_id)
-
-

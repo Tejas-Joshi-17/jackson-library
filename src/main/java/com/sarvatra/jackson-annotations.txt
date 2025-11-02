@@ -1,0 +1,98 @@
+------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
+
+Introduction to Jackson Annotations :-
+
+    1) Jackson is a popular Java library for :-
+        - Serializing Java objects into JSON
+        - Deserializing JSON into Java objects
+
+    2) By default, Jackson uses JavaBean conventions :-
+        - Properties are mapped to JSON fields using getters/setters.
+        - Field names are directly used as JSON keys (unless configured otherwise).
+
+    3) But in real-world applications :-
+        - Field names in JSON may differ from Java field names.
+        - Some fields may need to be ignored.
+        - Formatting (e.g., dates) might not match default expectations.
+        - Polymorphic types (inheritance) may need explicit hints for correct deserialization.
+
+    👉 This is where Jackson annotations come in :-
+        Jackson annotations are metadata placed on classes, fields, methods, or constructors that tell Jackson how to handle (de)serialization.
+    👉 They live in the package :-
+        com.fasterxml.jackson.annotation
+
+------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
+
+Annotations :-
+
+1)  JacksonAnnotation
+2)  JacksonAnnotationsInside
+3)  JacksonAnnotationValue
+4)  JacksonInject
+5)  JsonAlias
+6)  JsonAnyGetter
+7)  JsonAnySetter
+8)  JsonAutoDetect
+9)  JsonBackReference
+10) JsonClassDescription
+11) JsonCreator
+12) JsonEnumDefaultValue
+13) JsonFilter
+14) JsonFormat
+15) JsonGetter
+16) JsonIdentityInfo
+17) JsonIdentityReference
+18) JsonIgnore
+19) JsonIgnoreProperties
+20) JsonIgnoreType
+21) JsonInclude
+22) JsonIncludeProperties
+23) JsonKey
+24) JsonManagedReference
+25) JsonMerge
+26) JsonProperty
+27) JsonPropertyDescription
+28) JsonPropertyOrder
+29) JsonRawValue
+30) JsonRootName
+31) JsonSetter
+32) JsonSubTypes
+33) JsonTypeId
+34) JsonTypeInfo
+35) JsonTypeName
+36) JsonUnwrapped
+37) JsonValue
+38) JsonView
+
+------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
+
+1) @JsonProperty :-
+
+    The @JsonProperty annotation in Jackson is used to define the mapping between JSON field names and Java property names
+    during serialization (Java → JSON) and deserialization (JSON → Java).
+
+    +---------+----------------+----------------------------------------------------+----------------------------------------------------+
+    | Sr. No  |  Property      | Description                                        | Example                                            |
+    +---------+----------------+----------------------------------------------------+----------------------------------------------------+
+    |   1)    | value          | Name to map in JSON                                | `@JsonProperty("student_id")`                      |
+    |   2)    | access         | Controls read/write behavior                       | `READ_ONLY`, `WRITE_ONLY`, `AUTO`, `READ_WRITE`    |
+    |   3)    | required       | Marks property as mandatory during deserialization | `@JsonProperty(value="id", required=true)`         |
+    |   4)    | defaultValue   | Default value if missing during deserialization    | `@JsonProperty(defaultValue="Unknown")`            |
+    |   5)    | index          | Used in array-like serialization                   |  Rarely used in POJOs                              |
+    |   6)    | namespace      | For XML (when using Jackson XML module)            | `@JsonProperty(namespace="http://example.com/ns")` |
+    +---------+----------------+----------------------------------------------------+----------------------------------------------------+
+
+    +---------+----------------+----------------------+-------------------------------------+-----------------------------------------------+
+    | Sr. No  | Property       | Used For             | Example                             | Effect                                        |
+    +---------+----------------+----------------------+-------------------------------------+-----------------------------------------------+
+    |   1)    | value          | Rename field         | `@JsonProperty("id")`               | Maps JSON name `id` to Java field `studentId` |
+    |   2)    | required       | Mandatory field      | `@JsonProperty(required = true)`    | Throws exception if missing                   |
+    |   3)    | defaultValue   | Default when missing | `@JsonProperty(defaultValue = "A")` | Fills default on missing JSON field           |
+    |   4)    | access         | Control visibility   | `@JsonProperty(access = READ_ONLY)` | Read-only / write-only property               |
+    |   5)    | index          | Ordering for arrays  | `@JsonProperty(index = 1)`          | Defines position in array serialization       |
+    |   6)    | namespace      | XML namespace        | `@JsonProperty(namespace="...")`    | Used with Jackson XML module                  |
+    +---------+----------------+----------------------+-------------------------------------+-----------------------------------------------+
+
+
+
+
